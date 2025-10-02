@@ -23,8 +23,9 @@ datastorePreferences = "1.1.7"
 uiToolingPreview = "1.9.2"
 uiTooling = "1.9.2"
 turbine = "1.2.1"
-mockk = "1.14.5"
+mockk = "1.14.6"
 material-icons = "1.7.8"
+detekt = "1.23.8"
 
 [libraries]
 material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "material-icons" }
@@ -76,3 +77,4 @@ kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }

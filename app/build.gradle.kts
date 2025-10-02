@@ -6,6 +6,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.detekt)
 }
 
 android {
@@ -51,6 +52,14 @@ android {
         compilerOptions {
             jvmTarget = JvmTarget.JVM_11
         }
+    }
+}
+
+detekt {
+    config.setFrom(files("$rootDir/detekt.yml"))
+    buildUponDefaultConfig = true
+    reports {
+        html.required.set(true)
     }
 }
 
