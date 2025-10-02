@@ -10,6 +10,7 @@ import com.sun.confectionery.auth.presentation.authModules
 import com.sun.confectionery.core.db.dbModule
 import com.sun.confectionery.core.network.networkModule
 import com.sun.confectionery.features.products.presentation.productsModules
+import com.sun.confectionery.products.details.productViewModelModule
 import okhttp3.OkHttpClient
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext
@@ -25,7 +26,8 @@ class MainApplication : Application() {
             authModule,
             networkModule,
             navigationModule,
-            dbModule
+            dbModule,
+            productViewModelModule
         )
         modules.addAll(authModules)
         modules.addAll(productsModules)

@@ -4,6 +4,7 @@ import com.sun.confectionery.products.data.ProductsApi
 import com.sun.confectionery.products.domain.ProductsRepository
 import com.sun.confectionery.features.products.domainimpl.ProductsRepositoryImpl
 import com.sun.confectionery.products.data.ProductsApiImpl
+import com.sun.confectionery.products.domain.usecase.GetProductUseCase
 import com.sun.confectionery.products.domain.usecase.GetProductsUseCase
 import com.sun.confectionery.products.domain.usecase.RefreshProductsUseCase
 import io.ktor.client.HttpClient
@@ -24,6 +25,7 @@ val productsDomainModule = module {
     }
     factory { GetProductsUseCase(get()) }
     factory { RefreshProductsUseCase(get()) }
+    factory { GetProductUseCase(get()) }
 }
 
 val productsViewModelModule = module {

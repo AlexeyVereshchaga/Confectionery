@@ -8,7 +8,7 @@ plugins {
 }
 
 android {
-    namespace = "com.sun.confectionery.feature.products.presentation"
+    namespace = "com.sun.confectionery.feature.products.details.presentation"
     compileSdk = 35
 
     defaultConfig {
@@ -45,6 +45,7 @@ dependencies {
     implementation(libs.compose.ui)
     implementation(libs.compose.material3)
     implementation(libs.coil.compose)
+    implementation(libs.material.icons.extended)
 
     testImplementation(libs.turbine)
     testImplementation(libs.mockk)

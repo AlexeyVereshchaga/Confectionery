@@ -24,8 +24,10 @@ uiToolingPreview = "1.9.2"
 uiTooling = "1.9.2"
 turbine = "1.2.1"
 mockk = "1.14.5"
+material-icons = "1.7.8"
 
 [libraries]
+material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended", version.ref = "material-icons" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

@@ -5,8 +5,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.ksp)
-    alias(libs.plugins.compose.compiler) // Added this line
-    //id("kotlin-kapt")
+    alias(libs.plugins.compose.compiler)
 }
 
 android {
@@ -54,7 +53,8 @@ dependencies {
     implementation(project(":core-db"))
     //features
     implementation(project(":features:auth:presentation"))
-    implementation(project(":features:products:presentation"))
+    implementation(project(":features:products:list:presentation"))
+    implementation(project(":features:products:details:presentation"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -83,7 +83,6 @@ dependencies {
     // room
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
-    //ksp(libs.room.compiler)
 
     //datastore
     implementation(libs.androidx.datastore.preferences)

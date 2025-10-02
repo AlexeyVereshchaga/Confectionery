@@ -26,5 +26,6 @@ include(
     ":features:products:domain",
     ":features:products:domainimpl",
     ":features:products:data",
-    ":features:products:presentation"
+    ":features:products:list:presentation",
+    ":features:products:details:presentation"
 )
