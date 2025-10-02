@@ -23,16 +23,17 @@ class ProductsViewModel(
         }
     }
 
-    private fun load(){
+    private fun load() {
         launch {
             setState { copy(isLoading = true) }
             val res = refreshProductsUseCase()
-            if (res is Outcome.Success) {
-                val local = withContext(Dispatchers.IO) { getProductsUseCase()}
-                setState { copy(isLoading = false, items = local) }
-            } else {
-                val local = withContext(Dispatchers.IO) { getProductsUseCase() }
-                setState { copy(isLoading = false, items = local) }
+            when (res) {
+                is Outcome.Error, is Outcome.Success<*> -> {
+                    val local = withContext(Dispatchers.IO) { getProductsUseCase() }
+                    setState { copy(isLoading = false, items = local) }
+                }
+
+                Outcome.Loading -> setState { copy(isLoading = true) }
             }
         }
     }

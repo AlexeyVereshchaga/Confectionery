@@ -1,19 +1,14 @@
 package com.sun.confectionery.features.products.presentation
 
 import app.cash.turbine.test
-import com.sun.confectionery.core.Outcome
 import com.sun.confectionery.core.navigation.NavigationManager
 import com.sun.confectionery.features.products.presentation.util.MainCoroutineRule
-import com.sun.confectionery.products.domain.model.Product
 import com.sun.confectionery.products.domain.usecase.GetProductsUseCase
 import com.sun.confectionery.products.domain.usecase.RefreshProductsUseCase
-import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -38,5 +33,20 @@ class ProductsViewModelTest {
     fun `initial state is correct`() = runTest {
         val initialState = ProductsState()
         assertEquals(initialState, viewModel.state.value)
+    }
+
+    @Test
+    fun `select intent sends open product event`() = runTest {
+        val productId = "123L"
+
+        viewModel.events.test {
+            // When
+            viewModel.handle(ProductsIntent.Select(productId))
+
+            // Then
+            val event = awaitItem()
+            assertEquals(ProductsEvent.OpenProduct(productId), event)
+            cancelAndIgnoreRemainingEvents()
+        }
     }
 }
