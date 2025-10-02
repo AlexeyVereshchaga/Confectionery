@@ -1,7 +1,8 @@
 package com.sun.confectionery.di
 
-import com.sun.confectionery.auth.EncryptedTokenStorage
-import com.sun.confectionery.core.auth.TokenStorage
+
+import com.sun.confectionery.core.storage.TokenStorage
+import com.sun.confectionery.storage.EncryptedTokenStorage
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 

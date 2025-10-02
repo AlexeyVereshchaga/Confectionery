@@ -1,4 +1,4 @@
-package com.sun.confectionery.auth
+package com.sun.confectionery.storage
 
 import android.content.Context
 import android.security.keystore.KeyGenParameterSpec
@@ -6,7 +6,7 @@ import android.security.keystore.KeyProperties
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
-import com.sun.confectionery.core.auth.TokenStorage
+import com.sun.confectionery.core.storage.TokenStorage
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.map

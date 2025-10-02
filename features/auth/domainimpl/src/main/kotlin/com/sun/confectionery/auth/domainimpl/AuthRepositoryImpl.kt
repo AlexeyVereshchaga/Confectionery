@@ -6,7 +6,7 @@ import com.sun.confectionery.auth.data.dto.LoginDto
 import com.sun.confectionery.auth.domain.AuthRepository
 import com.sun.confectionery.auth.domain.model.Token
 import com.sun.confectionery.core.Outcome
-import com.sun.confectionery.core.auth.TokenStorage
+import com.sun.confectionery.core.storage.TokenStorage
 
 class AuthRepositoryImpl(
     private val api: AuthApi,

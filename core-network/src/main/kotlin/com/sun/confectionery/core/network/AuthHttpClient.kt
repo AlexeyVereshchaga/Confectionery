@@ -1,7 +1,7 @@
 package com.sun.confectionery.core.network
 
 import com.sun.confectionery.core.ApiConfig
-import com.sun.confectionery.core.auth.TokenStorage
+import com.sun.confectionery.core.storage.TokenStorage
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.cio.CIO
 import io.ktor.client.plugins.auth.Auth

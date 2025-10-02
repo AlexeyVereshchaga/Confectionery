@@ -1,4 +1,4 @@
-package com.sun.confectionery.core.auth
+package com.sun.confectionery.core.storage
 
 interface TokenStorage {
     suspend fun saveAccessToken(token: String)
