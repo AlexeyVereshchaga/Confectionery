@@ -1,11 +1,17 @@
+# Project-specific files
 *.iml
 .gradle
+local.properties
 .DS_Store
-/build
+
+# Build output
 build/
 /captures
 .externalNativeBuild
 .cxx
-local.properties
- # IntelliJ
- /.idea/
+
+# IntelliJ project files
+/.idea/
+
+# Kotlin build cache
+/.kotlin/
