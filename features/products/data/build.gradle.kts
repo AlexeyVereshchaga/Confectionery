@@ -27,7 +27,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature-products-domain"))
+    implementation(project(":features:products:domain"))
     api(project(":core-network"))
     api(project(":core-db"))
 

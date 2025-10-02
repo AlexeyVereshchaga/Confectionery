@@ -26,8 +26,8 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature-products-domain"))
-    implementation(project(":feature-products-data"))
+    implementation(project(":features:products:domain"))
+    implementation(project(":features:products:data"))
     implementation(project(":core-db"))
     implementation(project(":core"))
 }

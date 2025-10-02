@@ -33,9 +33,9 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":feature-products-domain"))
-    implementation(project(":feature-products-data"))
-    implementation(project(":feature-products-domainimpl"))
+    implementation(project(":features:products:domain"))
+    implementation(project(":features:products:data"))
+    implementation(project(":features:products:domainimpl"))
 
     implementation(libs.koin.android)
     implementation(libs.koin.android.compose)

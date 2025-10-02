@@ -23,8 +23,8 @@ include(
     ":features:auth:domainimpl",
     ":features:auth:data",
     ":features:auth:presentation",
-    ":feature-products-domain",
-    ":feature-products-domainimpl",
-    ":feature-products-data",
-    ":feature-products-presentation"
+    ":features:products:domain",
+    ":features:products:domainimpl",
+    ":features:products:data",
+    ":features:products:presentation"
 )

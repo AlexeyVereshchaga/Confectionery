@@ -54,7 +54,7 @@ dependencies {
     implementation(project(":core-db"))
     //features
     implementation(project(":features:auth:presentation"))
-    implementation(project(":feature-products-presentation"))
+    implementation(project(":features:products:presentation"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
