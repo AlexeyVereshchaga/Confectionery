@@ -6,9 +6,12 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
@@ -50,7 +53,7 @@ fun ProductsScreen(
         if (state.isLoading) {
             CircularProgressIndicator(Modifier.align(Alignment.Center))
         }
-        LazyColumn {
+        LazyColumn(contentPadding = WindowInsets.safeDrawing.asPaddingValues()) {
             items(state.items) { item ->
                 val imageUrl = "http://" + ApiConfig.BASE_URL + ":8080" + item.imageUrl
                 Log.d("ProductsScreen", "imageUrl:$imageUrl ")
@@ -58,7 +61,9 @@ fun ProductsScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable { viewModel.handle(ProductsIntent.Select(item.id)) }
-                        .padding(12.dp)) {
+                        .padding(12.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
                     AsyncImage(
                         model = ImageRequest.Builder(LocalContext.current)
                             .data(imageUrl)
