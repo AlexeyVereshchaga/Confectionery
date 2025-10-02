@@ -27,7 +27,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature-auth-domain"))
+    implementation(project(":features:auth:domain"))
     api(project(":core-network"))
 
     implementation(libs.ktor.client.core)

@@ -53,7 +53,7 @@ dependencies {
     implementation(project(":core-network"))
     implementation(project(":core-db"))
     //features
-    implementation(project(":feature-auth-presentation"))
+    implementation(project(":features:auth:presentation"))
     implementation(project(":feature-products-presentation"))
 
     implementation(libs.androidx.core.ktx)

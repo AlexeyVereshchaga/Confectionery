@@ -26,7 +26,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":feature-auth-domain"))
-    implementation(project(":feature-auth-data"))
+    implementation(project(":features:auth:domain"))
+    implementation(project(":features:auth:data"))
     implementation(project(":core"))
 }

@@ -33,9 +33,9 @@ android {
 
 dependencies {
     implementation(project(":core"))
-    implementation(project(":feature-auth-domain"))
-    implementation(project(":feature-auth-data"))
-    implementation(project(":feature-auth-domainimpl"))
+    implementation(project(":features:auth:data"))
+    implementation(project(":features:auth:domain"))
+    implementation(project(":features:auth:domainimpl"))
 
     implementation(libs.koin.android)
     implementation(libs.koin.android.compose)
