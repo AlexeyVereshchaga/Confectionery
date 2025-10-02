@@ -26,6 +26,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
@@ -53,7 +54,10 @@ fun ProductsScreen(
         if (state.isLoading) {
             CircularProgressIndicator(Modifier.align(Alignment.Center))
         }
-        LazyColumn(contentPadding = WindowInsets.safeDrawing.asPaddingValues()) {
+        LazyColumn(
+            modifier = Modifier.testTag("product_list"),
+            contentPadding = WindowInsets.safeDrawing.asPaddingValues()
+        ) {
             items(state.items) { item ->
                 val imageUrl = "http://" + ApiConfig.BASE_URL + ":8080" + item.imageUrl
                 Log.d("ProductsScreen", "imageUrl:$imageUrl ")
@@ -61,7 +65,8 @@ fun ProductsScreen(
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable { viewModel.handleIntent(ProductsIntent.Select(item.id)) }
-                        .padding(12.dp),
+                        .padding(12.dp)
+                        .testTag("product_item"),
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     AsyncImage(
@@ -81,7 +86,11 @@ fun ProductsScreen(
                     )
                     Spacer(Modifier.width(12.dp))
                     Column {
-                        Text(item.name, style = MaterialTheme.typography.titleMedium)
+                        Text(
+                            text = item.name,
+                            style = MaterialTheme.typography.titleMedium,
+                            modifier = Modifier.testTag("product_name")
+                        )
                         Text(item.formattedPrice, style = MaterialTheme.typography.bodyMedium)
                     }
                 }

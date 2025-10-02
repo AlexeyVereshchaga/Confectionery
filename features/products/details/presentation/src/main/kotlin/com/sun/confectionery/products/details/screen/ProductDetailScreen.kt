@@ -23,6 +23,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.sun.confectionery.core.ApiConfig
@@ -44,7 +45,7 @@ fun ProductDetailScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(text = state.product?.name ?: "") },
+                title = { Text(text = state.product?.name ?: "", modifier = Modifier.testTag("product_detail_name")) },
                 navigationIcon = {
                     IconButton(onClick = { viewModel.handleIntent(ProductIntent.Back) }) {
                         Icon(
