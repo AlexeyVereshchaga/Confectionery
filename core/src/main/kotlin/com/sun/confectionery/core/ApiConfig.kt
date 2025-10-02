@@ -1,5 +1,7 @@
 package com.sun.confectionery.core
 
 object ApiConfig {
-    const val BASE_URL = "http://10.0.2.2:8080" //http://localhost:8080
+    // Use 10.0.2.2 for Android emulator to connect to host's localhost
+    const val BASE_URL = "10.0.2.2"
+    const val PORT = 8080
 }

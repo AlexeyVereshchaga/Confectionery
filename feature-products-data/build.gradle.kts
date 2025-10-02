@@ -15,21 +15,21 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     kotlin {
         compilerOptions {
-            jvmTarget = JvmTarget.JVM_11
+            jvmTarget = JvmTarget.JVM_21
         }
     }
 }
 
 dependencies {
     implementation(project(":feature-products-domain"))
-    implementation(project(":core-network"))
-    implementation(project(":core-db"))
+    api(project(":core-network"))
+    api(project(":core-db"))
 
     implementation(libs.ktor.client.core)
     implementation(libs.koin.android)

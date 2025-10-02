@@ -1,11 +1,11 @@
 package com.sun.confectionery.features.products.presentation
 
 import com.sun.confectionery.core.mvi.BaseState
-import com.sun.confectionery.features.products.domain.ProductModel
+import com.sun.confectionery.products.domain.model.Product
 
 
 data class ProductsState(
-    val isLoading: Boolean = false,
-    val items: List<ProductModel> = emptyList()
+    val isLoading: Boolean = true,
+    val items: List<Product> = emptyList()
 ): BaseState
 

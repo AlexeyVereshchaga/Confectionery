@@ -24,7 +24,7 @@ class AuthRepositoryImpl(
         }
     }
 
-    override suspend fun login(email: String, password: String):Outcome<Token> {
+    override suspend fun login(email: String, password: String): Outcome<Token> {
         return try {
             val dto = LoginDto(email, password)
             val tokenDto = api.login(dto)

@@ -1,4 +1,4 @@
-package com.sun.confectionery.app.auth
+package com.sun.confectionery.auth
 
 import android.content.Context
 import android.security.keystore.KeyGenParameterSpec

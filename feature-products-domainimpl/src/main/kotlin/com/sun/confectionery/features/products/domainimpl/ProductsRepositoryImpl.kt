@@ -3,15 +3,14 @@ package com.sun.confectionery.features.products.domainimpl
 import com.sun.confectionery.core.Outcome
 import com.sun.confectionery.core.db.dao.ProductDao
 import com.sun.confectionery.core.db.entities.ProductEntity
-import com.sun.confectionery.features.products.data.ProductsApi
-import com.sun.confectionery.features.products.domain.ProductModel
-import com.sun.confectionery.features.products.domain.ProductRepository
-
+import com.sun.confectionery.products.data.ProductsApi
+import com.sun.confectionery.products.domain.model.Product
+import com.sun.confectionery.products.domain.ProductsRepository
 
 class ProductsRepositoryImpl(
     private val api: ProductsApi,
     private val dao: ProductDao
-) : ProductRepository {
+) : ProductsRepository {
 
     override suspend fun refreshProductsFromNetwork(): Outcome<Unit> {
         return try {
@@ -33,15 +32,15 @@ class ProductsRepositoryImpl(
         }
     }
 
-    override suspend fun getAllLocal(): List<ProductModel> {
+    override suspend fun getAllLocal(): List<Product> {
         return dao.getAll().map {
-            ProductModel(it.id, it.name, it.description, it.price, it.formattedPrice, it.imageUrl)
+            Product(it.id, it.name, it.description, it.price, it.formattedPrice, it.imageUrl)
         }
     }
 
-    override suspend fun getById(id: String): ProductModel? {
+    override suspend fun getById(id: String): Product? {
         return dao.getById(id)?.let {
-            ProductModel(it.id, it.name, it.description, it.price, it.formattedPrice, it.imageUrl)
+            Product(it.id, it.name, it.description, it.price, it.formattedPrice, it.imageUrl)
         }
     }
 }

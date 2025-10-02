@@ -1,5 +1,6 @@
 package com.sun.confectionery.features.products.presentation.screen
 
+import android.util.Log
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -21,30 +22,58 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.sun.confectionery.core.ApiConfig
+import com.sun.confectionery.features.products.presentation.ProductsEvent
 import com.sun.confectionery.features.products.presentation.ProductsIntent
 import com.sun.confectionery.features.products.presentation.ProductsViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun ProductsScreen(viewModel: ProductsViewModel = koinViewModel(),
-                   onOpen: (String) -> Unit) {
+fun ProductsScreen(
+    viewModel: ProductsViewModel = koinViewModel()
+) {
     val state by viewModel.state.collectAsState()
     LaunchedEffect(Unit) { viewModel.handle(ProductsIntent.Load) }
+    LaunchedEffect(Unit) {
+        viewModel.events.collect { event ->
+            when (event) {
+                is ProductsEvent.OpenProduct -> {}
+            }
+        }
+    }
 
     Box(Modifier.fillMaxSize()) {
         if (state.isLoading) {
             CircularProgressIndicator(Modifier.align(Alignment.Center))
         }
         LazyColumn {
-            items(state.items){ item ->
-                Row(modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { onOpen(item.id) }
-                    .padding(12.dp)) {
-                    AsyncImage(model = ApiConfig.BASE_URL + item.imageUrl, contentDescription = null, modifier = Modifier.size(80.dp))
+            items(state.items) { item ->
+                val imageUrl = "http://" + ApiConfig.BASE_URL + ":8080" + item.imageUrl
+                Log.d("ProductsScreen", "imageUrl:$imageUrl ")
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable { viewModel.handle(ProductsIntent.Select(item.id)) }
+                        .padding(12.dp)) {
+                    AsyncImage(
+                        model = ImageRequest.Builder(LocalContext.current)
+                            .data(imageUrl)
+                            .crossfade(true)
+                            .listener(
+                                onStart = { Log.d("Coil", "Start loading: $imageUrl") },
+                                onSuccess = { _, _ -> Log.d("Coil", "Success: $imageUrl") },
+                                onError = { _, result ->
+                                    Log.e("Coil", "Error: $imageUrl", result.throwable)
+                                }
+                            )
+                            .build(),
+                        contentDescription = null,
+                        modifier = Modifier.size(80.dp)
+                    )
                     Spacer(Modifier.width(12.dp))
                     Column {
                         Text(item.name, style = MaterialTheme.typography.titleMedium)

@@ -48,9 +48,12 @@ android {
 }
 
 dependencies {
-
+    //core
     implementation(project(":core"))
     implementation(project(":core-network"))
+    implementation(project(":core-db"))
+    //features
+    implementation(project(":feature-auth-presentation"))
     implementation(project(":feature-products-presentation"))
 
     implementation(libs.androidx.core.ktx)
@@ -65,6 +68,7 @@ dependencies {
 
     implementation(libs.koin.android)
     implementation(libs.koin.core)
+    implementation(libs.koin.android.compose)
     implementation(libs.coil.compose)
 
     // network + serialization
@@ -79,13 +83,15 @@ dependencies {
     // room
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
-    //ksp(libs.room.compiler) // This is still commented out
+    //ksp(libs.room.compiler)
 
     //datastore
     implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.ui.tooling.preview)
 
     // test
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+    debugImplementation(libs.androidx.ui.tooling)
 }

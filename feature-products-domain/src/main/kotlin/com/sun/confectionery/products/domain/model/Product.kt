@@ -1,7 +1,6 @@
-package com.sun.confectionery.features.products.domain
+package com.sun.confectionery.products.domain.model
 
-
-data class ProductModel(
+data class Product(
     val id: String,
     val name: String,
     val description: String,
@@ -9,4 +8,3 @@ data class ProductModel(
     val formattedPrice: String,
     val imageUrl: String
 )
-
