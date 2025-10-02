@@ -1,5 +1,6 @@
-package com.sun.confectionery.auth.presentation
+package com.sun.confectionery.auth.presentation.screen
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -20,8 +21,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import com.sun.confectionery.auth.presentation.AuthEvent
+import com.sun.confectionery.auth.presentation.AuthIntent
+import com.sun.confectionery.auth.presentation.AuthViewModel
 import org.koin.androidx.compose.koinViewModel
 
 
@@ -32,12 +37,13 @@ fun LoginScreen(
     val state by viewModel.state.collectAsState()
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    val context = LocalContext.current
 
     LaunchedEffect(Unit) {
         viewModel.events.collect { event ->
             when (event) {
                 is AuthEvent.Error -> {
-                    //todo показать тост с ошибкой
+                    Toast.makeText(context, event.message, Toast.LENGTH_SHORT).show()
                 }
 
                 AuthEvent.Success -> {}
@@ -71,7 +77,7 @@ fun LoginScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             Button(
-                onClick = { viewModel.onIntent(AuthIntent.Login(email, password)) },
+                onClick = { viewModel.handleIntent(AuthIntent.Login(email, password)) },
                 enabled = !state.isLoading,
                 modifier = Modifier.fillMaxWidth()
             ) {

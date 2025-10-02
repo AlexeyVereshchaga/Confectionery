@@ -51,7 +51,7 @@ class AuthViewModelTest {
 
         viewModel.events.test {
             // When
-            viewModel.onIntent(AuthIntent.Login(email, password))
+            viewModel.handleIntent(AuthIntent.Login(email, password))
 
             // Then
             assertFalse(viewModel.state.value.isLoading)
@@ -74,7 +74,7 @@ class AuthViewModelTest {
 
         viewModel.events.test {
             // When
-            viewModel.onIntent(AuthIntent.Login(email, password))
+            viewModel.handleIntent(AuthIntent.Login(email, password))
 
             // Then
             assertFalse(viewModel.state.value.isLoading)

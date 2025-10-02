@@ -3,11 +3,10 @@ package com.sun.confectionery
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.remember
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.sun.confectionery.auth.presentation.LoginScreen
+import com.sun.confectionery.auth.presentation.screen.LoginScreen
 import com.sun.confectionery.core.navigation.Destinations
 import com.sun.confectionery.core.navigation.NavigationEvent
 import com.sun.confectionery.core.navigation.NavigationManager
@@ -30,9 +29,11 @@ fun App() {
                         popUpTo(Destinations.Login.route) { inclusive = true }
                     }
                 }
+
                 is NavigationEvent.NavigateToProductDetail -> {
                     //navController.navigate(Destinations.ProductDetail.createRoute(event.productId))
                 }
+
                 NavigationEvent.NavigateBack -> {
                     navController.popBackStack()
                 }

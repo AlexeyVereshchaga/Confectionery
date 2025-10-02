@@ -40,7 +40,7 @@ fun ProductsScreen(
     viewModel: ProductsViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsState()
-    LaunchedEffect(Unit) { viewModel.handle(ProductsIntent.Load) }
+    LaunchedEffect(Unit) { viewModel.handleIntent(ProductsIntent.Load) }
     LaunchedEffect(Unit) {
         viewModel.events.collect { event ->
             when (event) {
@@ -60,7 +60,7 @@ fun ProductsScreen(
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clickable { viewModel.handle(ProductsIntent.Select(item.id)) }
+                        .clickable { viewModel.handleIntent(ProductsIntent.Select(item.id)) }
                         .padding(12.dp),
                     verticalAlignment = Alignment.CenterVertically
                 ) {

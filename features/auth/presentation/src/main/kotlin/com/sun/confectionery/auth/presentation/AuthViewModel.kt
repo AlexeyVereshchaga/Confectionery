@@ -13,7 +13,7 @@ class AuthViewModel(
     private val registerUseCase: RegisterUseCase
 ) : BaseViewModel<AuthState, AuthIntent, AuthEvent>(AuthState()) {
 
-    fun onIntent(intent: AuthIntent) {
+    fun handleIntent(intent: AuthIntent) {
         when (intent) {
             is AuthIntent.Login -> doLogin(intent.email, intent.password)
         }

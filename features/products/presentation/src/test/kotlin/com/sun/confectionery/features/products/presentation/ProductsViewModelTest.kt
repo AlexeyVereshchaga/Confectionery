@@ -41,7 +41,7 @@ class ProductsViewModelTest {
 
         viewModel.events.test {
             // When
-            viewModel.handle(ProductsIntent.Select(productId))
+            viewModel.handleIntent(ProductsIntent.Select(productId))
 
             // Then
             val event = awaitItem()
